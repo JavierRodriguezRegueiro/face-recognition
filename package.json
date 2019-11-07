@@ -8,6 +8,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "await-exec": "^0.1.2",
     "express": "^4.16.1",
     "face-recognition": "^0.9.4"
   }
