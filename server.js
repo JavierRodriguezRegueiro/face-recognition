@@ -3,8 +3,6 @@ const fr = require('face-recognition');
 const detector = fr.FaceDetector();
 const recognizer = fr.FaceRecognizer();
 const fs = require('fs');
-const http = require('http');
-
 
 let exit = fs.existsSync("./model.json");
 if(!exit) {
