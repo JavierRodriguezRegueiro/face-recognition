@@ -80,13 +80,6 @@ if(!exit) {
 const express = require('express')
 const bodyParser = require('body-parser');
 
-function base64_encode(file) {
-  // read binary data
-  var bitmap = fs.readFileSync(file);
-  // convert binary data to base64 encoded string
-  return new Buffer(bitmap).toString('base64');
-}
-var base64str = base64_encode('./people/gorka/gorka1.jpg');
 
 // Constants
 const PORT = 3000;
@@ -126,13 +119,6 @@ app.post('/',jsonParser, (req, res) => {
      res.end();
   }
 });
-
-app.post('/img', (req, res) => {
-  res.json({
-    img: base64str
-   })
-   res.end();
-})
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
