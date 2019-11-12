@@ -4,8 +4,9 @@ const detector = fr.FaceDetector();
 const recognizer = fr.FaceRecognizer();
 const fs = require('fs');
 
-let exit = fs.existsSync("./model.json");
-if(!exit) {
+let modelFile = fs.existsSync("./model.json");
+if(!modelFile) {
+  console.log('Training model...');
   //Load images
   const gorka1 = fr.loadImage('./people/gorka/gorka1.jpg');
   const gorka2 = fr.loadImage('./people/gorka/gorka2.jpg');
@@ -69,7 +70,7 @@ if(!exit) {
   console.log(modelState);
   fs.writeFileSync('model.json', JSON.stringify(modelState))
 } else {
-  console.log("All good mate");
+  console.log("The model is trained, loading information from json file.");
   const modelState = require('./model.json')
   recognizer.load(modelState)
 }
